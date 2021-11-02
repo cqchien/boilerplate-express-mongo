@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+ app:
+  build:
+   context: .
+  container_name: template-backend
+  ports:
+   - 5000:5000
+  environment:
+   - .env
+  volumes:
+   - ./:/src
+
+ mongo:
+  image: mongo:4.2.8
+  ports:
+   - 27017:27017
+  volumes:
+   - mongodb:/data/db
+   - mongodb_config:/data/configdb
+volumes:
+ mongodb:
+ mongodb_config:
